@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 映射  dao  中的  UserDao接口  -->
+<mapper namespace="com.admin.dao.UserDao">
+    <select id="login" resultType="java.lang.Integer">
+        select count(1) from users where mail=#{arg0} and password=#{arg1}
+    </select>
+    <select id="user" resultType="com.admin.entity.User">
+        select * from users where mail=#{arg0} and password=#{arg1}
+    </select>
+    <select id="listall" resultType="com.admin.entity.User">
+        select * from users
+    </select>
+    <insert id="adduser">
+        insert into users(mail,name,password) values (#{arg0},#{arg1},#{arg2})
+    </insert>
+    <select id="testcount" resultType="java.lang.Integer">
+        select count(1) from users
+    </select>
+</mapper>
